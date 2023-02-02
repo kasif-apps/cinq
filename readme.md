@@ -124,6 +124,55 @@ countSlice.set(1);
 
 > Bound slices are **not** readonly, you can set them as you will.
 
+### Data Manipulation Interfaces (DMI)
+
+There are 2 (for now) basic data type wrappers to make data manipulation easier. These wrappers provide you the basic mutation methods for your data type.
+
+#### Record DMI
+
+You can use this dmi with object data to set a specific key to a value or upsert arbitrary data to the slice. You can also iterate over your slice to get key value pairs as an array.
+
+```typescript
+import { createRecordSlice } from "@kasif-apps/cinq";
+
+const dataSlice = createRecordSlice(
+  { some: "random", data: 10, isGood: false },
+  { key: "data" }
+);
+
+dataSlice.setKey("some", "arbitrary"); // methods are fully type safe
+dataSlice.get(); // { some: "arbitrary", data: 10, isGood: false }
+
+dataSlice.upsert({ data: 200, isGood: true });
+dataSlice.get(); // { some: "arbitrary", data: 200, isGood: true }
+
+console.log([...dataSlice]); // [ ["some", "arbitrary"], ["data", 200], ["isGood", true] ]
+```
+
+#### Vector DMI
+
+You can use this dmi to manipulate your list data. It encompasses all the mutating methods of the `Array` object while providing an iterator symbol to effectively use the spread operator.
+
+```typescript
+import { createRecordSlice } from "@kasif-apps/cinq";
+
+const dataSlice = createRecordSlice([0, 1, 2], { key: "data" });
+
+dataSlice.reverse();
+dataSlice.get(); // [2, 1, 0]
+
+dataSlice.pop();
+dataSlice.get(); // [2, 1]
+
+dataSlice.push(10);
+dataSlice.get(); // [2, 1, 10]
+
+dataSlice.setAt(1, 57);
+dataSlice.get(); // [2, 57, 0]
+
+console.log([...dataSlice]); // [2, 57, 0]
+```
+
 ### Simple Usage With React
 
 You can create a simple hook to use cinq with react.
