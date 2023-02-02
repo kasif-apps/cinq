@@ -154,9 +154,9 @@ console.log([...dataSlice]); // [ ["some", "arbitrary"], ["data", 200], ["isGood
 You can use this dmi to manipulate your list data. It encompasses all the mutating methods of the `Array` object while providing an iterator symbol to effectively use the spread operator.
 
 ```typescript
-import { createRecordSlice } from "@kasif-apps/cinq";
+import { createVectorSlice } from "@kasif-apps/cinq";
 
-const dataSlice = createRecordSlice([0, 1, 2], { key: "data" });
+const dataSlice = createVectorSlice([0, 1, 2], { key: "data" });
 
 dataSlice.reverse();
 dataSlice.get(); // [2, 1, 0]
