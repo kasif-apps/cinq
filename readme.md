@@ -30,7 +30,7 @@ Using pnpm
 pnpm i @kasif-apps/cinq
 ```
 
-### Basic usage
+### Basic Usage
 
 #### Simple Slices
 
@@ -123,3 +123,28 @@ countSlice.set(1);
 ```
 
 > Bound slices are **not** readonly, you can set them as you will.
+
+### Simple Usage With React
+
+You can create a simple hook to use cinq with react.
+
+```typescript
+import * as React from "react";
+import { Slice, SliceUpdate } from "@kasif-apps/cinq";
+
+export function useSlice<T>(slice: Slice<T>): [T, Slice<T>["set"]] {
+  const [value, setValue] = React.useState(slice.get());
+
+  const listener = (event: CustomEvent<SliceUpdate<T>>) => {
+    setValue(event.detail.value);
+  };
+
+  React.useEffect(() => slice.subscribe(listener), []);
+
+  return value;
+}
+```
+
+You don't need to set a global provider or a root level element. Just create your slices as you do, and use the hook to consume the value reactively.
+
+> Notice that the `useEffect` returns the result of the `.subscribe()` method. It returns an `unsubscribe()` function that cleans up the event listener.
