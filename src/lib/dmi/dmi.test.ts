@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
-import { Slice } from "../slice/slice";
-import { createRecordSlice, RecordSlice } from "./record";
-import { createVectorSlice, VectorSlice } from "./vector";
+import { Slice } from "@cinq/slice/slice";
+import { createRecordSlice, RecordSlice } from "@cinq/dmi/record";
+import { createVectorSlice, VectorSlice } from "@cinq/dmi/vector";
 
 test("record slice", () => {
   const recordSlice = createRecordSlice(

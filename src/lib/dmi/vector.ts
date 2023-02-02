@@ -1,4 +1,4 @@
-import { CreateSliceOptions, Slice } from "../slice/slice";
+import { CreateSliceOptions, Slice } from "@cinq/slice/slice";
 
 export class VectorSlice<T extends unknown[]> extends Slice<T> {
   setAt(index: number, value: T[number]): void {

@@ -1,4 +1,4 @@
-import { CreateSliceOptions, SliceSetter, Slice } from "../slice/slice";
+import { CreateSliceOptions, SliceSetter, Slice } from "@cinq/slice/slice";
 
 export class RecordSlice<T extends object> extends Slice<T> {
   upsert(value: SliceSetter<Partial<T>>): void {

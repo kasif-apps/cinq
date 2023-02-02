@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { createSlice, Slice, SliceUpdate, ReadonlySlice } from "./slice";
+import { createSlice, Slice, SliceUpdate, ReadonlySlice } from "@cinq/slice/slice";
 
 test("simple slice", () => {
   const slice = createSlice(10, { key: "simple" });

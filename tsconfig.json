@@ -14,7 +14,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@cinq/dmi/*": ["./src/lib/dmi/*"],
+      "@cinq/slice/*": ["./src/lib/slice/*"],
+      "@cinq/transactor/*": ["./src/lib/transactor/*"],
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
