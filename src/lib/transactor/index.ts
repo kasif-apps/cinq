@@ -1,5 +1,4 @@
 import { Slice } from "@cinq/slice/slice";
-export { StorageTransactor } from "@cinq/transactor/storage/storage";
 
 export type TransactorCompatibleSlice<T> = Slice<T>;
 
@@ -28,6 +27,10 @@ export class Transactor<T> {
     if (options.model) {
       this.setModel(options.model);
     }
+  }
+
+  buildKey(): string {
+    return `${this.key}.${this.slice.key}`;
   }
 
   defaultEncoder<K>(): K {

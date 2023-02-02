@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { Transactor, TransactorCompatibleSlice } from "@cinq/transactor/index";
+import { Transactor } from "@cinq/transactor/index";
 import { createSlice } from "@cinq/slice/slice";
 
 test("base int transactor", () => {
@@ -8,10 +8,14 @@ test("base int transactor", () => {
     key: "simple",
   });
 
-  expect(() => transactor.init()).toThrowError("Transactor.init() requires a slice to be set");
+  expect(() => transactor.init()).toThrowError(
+    "Transactor.init() requires a slice to be set"
+  );
 
+  
   transactor.slice = slice;
-
+  
+  expect(transactor.buildKey()).toBe("simple.simple");
   expect(transactor).toBeInstanceOf(Transactor);
 
   expect(transactor.encode()).toBe(JSON.stringify({ value: 10 }));
