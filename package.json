@@ -36,5 +36,26 @@
       "require": "./dist/cinq.umd.js"
     }
   },
-  "description": ""
+  "description": "Simple global state synchronization and management tool",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kasif-apps/cinq"
+  },
+  "homepage": "https://github.com/kasif-apps/cinq",
+  "bugs": {
+    "url": "https://github.com/kasif-apps/cinq/issues"
+  },
+  "keywords": [
+    "cinq",
+    "state",
+    "state management",
+    "state synchronization",
+    "state management tool",
+    "state synchronization tool",
+    "global state",
+    "global state management",
+    "global state synchronization",
+    "global state management tool",
+    "global state synchronization tool"
+  ]
 }

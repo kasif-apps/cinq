@@ -1,4 +1,4 @@
-<img width="80" src="./assets/cinq.png" />
+<img width="80" src="https://github.com/kasif-apps/cinq/raw/main/assets/cinq.png" />
 
 # Cinq
 
