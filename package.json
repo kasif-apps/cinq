@@ -20,6 +20,11 @@
     "vitest": "^0.28.3"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/kasif"
+  },
   "authors": [
     "Muhammed Ali CAN"
   ],
