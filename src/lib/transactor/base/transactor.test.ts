@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { Transactor } from "@cinq/transactor/index";
+import { Transactor } from "@cinq/transactor/base/transactor";
 import { createSlice } from "@cinq/slice/slice";
 
 test("base transactor with default codec", () => {

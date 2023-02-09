@@ -1,4 +1,4 @@
-import { Transactor, TransactorOptions } from "@cinq/transactor/index";
+import { Transactor, TransactorOptions } from "@cinq/transactor/base/transactor";
 
 export type StorageType = "localStorage" | "sessionStorage";
 

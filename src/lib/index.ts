@@ -1,5 +1,5 @@
 export { Slice, createSlice, ReadonlySlice } from "./slice/slice";
-export { Transactor } from "./transactor/index";
+export { Transactor } from "./transactor/base/transactor";
 export { StorageTransactor } from "./transactor/storage/storage";
 export { createRecordSlice, RecordSlice } from "./dmi/record";
 export { createVectorSlice, VectorSlice } from "./dmi/vector";
