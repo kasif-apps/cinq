@@ -24,7 +24,8 @@
     "Muhammed Ali CAN"
   ],
   "files": [
-    "dist"
+    "dist",
+    "assets"
   ],
   "main": "./dist/cinq.umd.js",
   "module": "./dist/cinq.es.js",
