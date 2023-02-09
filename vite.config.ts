@@ -12,9 +12,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/lib/index.ts"),
-      name: "quire-core",
+      name: "cinq",
       formats: ["es"],
-      fileName: (format) => `quire-core.${format}.js`,
+      fileName: (format) => `cinq.${format}.js`,
     },
     rollupOptions: {
       external: [],

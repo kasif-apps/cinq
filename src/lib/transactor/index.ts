@@ -4,7 +4,7 @@ export type TransactorCompatibleSlice<T> = Slice<T>;
 
 export type DataTypeModel<T, K, L = K> = {
   encode: (slice: TransactorCompatibleSlice<T>) => K;
-  decode: (record: L, slice: TransactorCompatibleSlice<T>) => T;
+  decode: (record: L) => T;
 };
 
 export interface TransactorOptions<T, K, L> {
@@ -51,7 +51,7 @@ export class Transactor<T> {
   }
 
   decode<K>(record: K): void {
-    const value = this.decoder(record, this.slice);
+    const value = this.decoder(record);
     this.slice.set(value);
   }
 
@@ -63,31 +63,31 @@ export class Transactor<T> {
 
   static String: DataTypeModel<string, string> = {
     encode: (slice) => slice.get(),
-    decode: (record, _slice) => record,
+    decode: (record) => record,
   };
 
   static Int: DataTypeModel<number, string> = {
     encode: (slice) => slice.get().toString(10),
-    decode: (record, _slice) => parseInt(record, 10),
+    decode: (record) => parseInt(record, 10),
   };
 
   static IntRadix2: DataTypeModel<number, string> = {
     encode: (slice) => slice.get().toString(2),
-    decode: (record, _slice) => parseInt(record, 2),
+    decode: (record) => parseInt(record, 2),
   };
 
   static IntRadix16: DataTypeModel<number, string> = {
     encode: (slice) => slice.get().toString(16),
-    decode: (record, _slice) => parseInt(record, 16),
+    decode: (record) => parseInt(record, 16),
   };
 
   static Boolean: DataTypeModel<boolean, string> = {
     encode: (slice) => slice.get().toString(),
-    decode: (record, _slice) => record === "true",
+    decode: (record) => record === "true",
   };
 
   static Date: DataTypeModel<Date, string> = {
     encode: (slice) => slice.get().toISOString(),
-    decode: (record, _slice) => new Date(record),
+    decode: (record) => new Date(record),
   };
 }

@@ -1,9 +1,23 @@
-import { Transactor } from "@cinq/transactor/index";
+import { Transactor, TransactorOptions } from "@cinq/transactor/index";
+
+export type StorageType = "localStorage" | "sessionStorage";
+
+export interface StorageTransactorOptions<T, K, L>
+  extends TransactorOptions<T, K, L> {
+  type?: StorageType;
+}
 
 export class StorageTransactor<T> extends Transactor<T> {
+  type: StorageType;
+
+  constructor(options: StorageTransactorOptions<T, any, any>) {
+    super(options);
+    this.type = options.type || "localStorage";
+  }
+
   init() {
     super.init();
-    const record = localStorage.getItem(this.buildKey());
+    const record = window[this.type].getItem(this.buildKey());
 
     if (record) {
       this.decode(record);
@@ -23,10 +37,10 @@ export class StorageTransactor<T> extends Transactor<T> {
   }
 
   set() {
-    localStorage.setItem(this.buildKey(), this.encode());
+    window[this.type].setItem(this.buildKey(), this.encode());
   }
 
   kill() {
-    localStorage.removeItem(this.buildKey());
+    window[this.type].removeItem(this.buildKey());
   }
 }
