@@ -197,3 +197,16 @@ export function useSlice<T>(slice: Slice<T>): [T, Slice<T>["set"]] {
 You don't need to set a global provider or a root level element. Just create your slices as you do, and use the hook to consume the value reactively.
 
 > Notice that the `useEffect` returns the result of the `.subscribe()` method. It returns an `unsubscribe()` function that cleans up the event listener.
+
+### Simple Usage With Svelte
+
+You can consume cinq stores with svelte's own syntax. Cinq abides by the [svelte store contract](https://svelte.dev/docs#component-format-script-4-prefix-stores-with-$-to-access-their-values-store-contract) out of the box.
+
+```svelte
+<script>
+  const count = createSlice(0, { key: "store" })
+</script>
+
+<p>{$count}</p>
+<button on:click={() => count.set(oldValue => oldValue + 1)}>Increment</button>
+```
