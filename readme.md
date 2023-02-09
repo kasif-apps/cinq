@@ -1,6 +1,4 @@
-<center>
-  <img width="80" src="assets/cinq.png" />
-</center>
+<img width="80" src="./assets/cinq.png" />
 
 # Cinq
 
