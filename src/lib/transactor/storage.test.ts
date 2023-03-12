@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { createSlice } from "@cinq/slice/slice";
-import { StorageTransactor } from "@cinq/transactor/storage/storage";
+import { StorageTransactor } from "@cinq/transactor/storage";
 
 function setStorage(
   type: "localStorage" | "sessionStorage",

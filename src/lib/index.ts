@@ -1,7 +1,7 @@
 export { Slice, createSlice, ReadonlySlice } from "./slice/slice";
-export { Transactor } from "./transactor/base/transactor";
-export { StorageTransactor } from "./transactor/storage/storage";
-export { NetworkTransactor } from "./transactor/network/network";
+export { Transactor } from "./transactor/transactor";
+export { StorageTransactor } from "./transactor/storage";
+export { NetworkTransactor } from "./transactor/network";
 export { createRecordSlice, RecordSlice } from "./dmi/record";
 export { createVectorSlice, VectorSlice } from "./dmi/vector";
 
@@ -15,9 +15,9 @@ export type {
 export type {
   TransactorOptions,
   TransactorCompatibleSlice,
-} from "./transactor/base/transactor";
+} from "./transactor/transactor";
 export type {
   StorageTransactorOptions,
   StorageType,
-} from "./transactor/storage/storage";
-export type { NetworkTransactorOptions } from "./transactor/network/network";
+} from "./transactor/storage";
+export type { NetworkTransactorOptions } from "./transactor/network";

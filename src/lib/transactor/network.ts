@@ -1,7 +1,7 @@
 import {
   Transactor,
   TransactorOptions,
-} from "@cinq/transactor/base/transactor";
+} from "@cinq/transactor/transactor";
 import { createRecordSlice } from "@cinq/dmi/record";
 
 export interface NetworkTransactorOptions<T, K, L>
