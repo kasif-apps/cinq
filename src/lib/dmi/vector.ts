@@ -9,8 +9,8 @@ export class VectorSlice<T extends unknown[]> extends Slice<T> {
     });
   }
 
-  push(value: T[number]): void {
-    this.set((state) => [...state, value] as T);
+  push(...items: T[number][]): void {
+    this.set((state) => [...state, ...items] as T);
   }
 
   pop(): void {

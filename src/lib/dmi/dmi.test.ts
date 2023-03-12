@@ -67,15 +67,20 @@ test("vector slice", () => {
   value = vectorSlice.get();
   expect(value).toEqual([4, 5, 6, 7]);
 
+  vectorSlice.push(8, 9, 10);
+  value = vectorSlice.get();
+  expect(value).toEqual([4, 5, 6, 7, 8, 9, 10]);
+
   vectorSlice.pop();
   vectorSlice.pop();
   value = vectorSlice.get();
-  expect(value).toEqual([4, 5]);
+  expect(value).toEqual([4, 5, 6, 7, 8]);
 
   vectorSlice.unshift(3);
   value = vectorSlice.get();
-  expect(value).toEqual([3, 4, 5]);
+  expect(value).toEqual([3, 4, 5, 6, 7, 8]);
 
+  vectorSlice.set([3, 4, 5]);
   vectorSlice.shift();
   vectorSlice.shift();
   value = vectorSlice.get();
