@@ -1,4 +1,7 @@
-import { Transactor, TransactorOptions } from "@cinq/transactor/base/transactor";
+import {
+  Transactor,
+  TransactorOptions,
+} from "@cinq/transactor/base/transactor";
 
 export type StorageType = "localStorage" | "sessionStorage";
 
@@ -26,7 +29,10 @@ export class StorageTransactor<T> extends Transactor<T> {
     }
 
     window.addEventListener("storage", (event) => {
-      if (event.key === this.buildKey()) {
+      if (
+        event.key === this.buildKey() &&
+        event.storageArea === window[this.type]
+      ) {
         this.decode(event.newValue);
       }
     });
