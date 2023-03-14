@@ -35,7 +35,6 @@ transactor.query(request, {
   },
 });
 
-
 slice.subscribe(() => {
   console.assert(slice.get().message === "Hello, Antwan");
 });

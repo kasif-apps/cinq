@@ -1,6 +1,11 @@
-import { CreateSliceOptions, Slice } from "@cinq/slice/slice";
+import { CreateSliceOptions, Slice, SliceSetter } from "@cinq/slice/slice";
 
-export class VectorSlice<T extends unknown[]> extends Slice<T> {
+export class Vector<T extends unknown[]> {
+  constructor(
+    public set: (value: SliceSetter<T>) => void,
+    public get: () => T
+  ) {}
+
   setAt(index: number, value: T[number]): void {
     this.set((state) => {
       const newValue = [...state] as T;
@@ -56,6 +61,35 @@ export class VectorSlice<T extends unknown[]> extends Slice<T> {
   copyWithin(target: number, start: number, end?: number): void {
     this.set((state) => [...state].copyWithin(target, start, end) as T);
   }
+
+  *[Symbol.iterator]() {
+    for (const item of this.get()) {
+      yield item;
+    }
+  }
+}
+
+export class VectorSlice<T extends unknown[]> extends Slice<T> {
+  vector: Vector<T> = new Vector(
+    () => {},
+    () => undefined as unknown as T
+  );
+
+  constructor(value: T, options: CreateSliceOptions) {
+    super(value, options);
+    this.vector = new Vector(this.set, this.get);
+  }
+
+  setAt = this.vector.setAt;
+  push = this.vector.push;
+  pop = this.vector.pop;
+  shift = this.vector.shift;
+  unshift = this.vector.unshift;
+  splice = this.vector.splice;
+  sort = this.vector.sort;
+  reverse = this.vector.reverse;
+  fill = this.vector.fill;
+  copyWithin = this.vector.copyWithin;
 
   *[Symbol.iterator]() {
     for (const item of this.get()) {
